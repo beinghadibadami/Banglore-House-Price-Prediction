@@ -1,5 +1,6 @@
 from flask import jsonify,request,Flask
 import util
+
 app=Flask(__name__)
 
 
@@ -41,6 +42,12 @@ def predict_house_price():
 
     return response
 
+@app.route('/')
+def home():
+    return "Flask server is running!"
+
 if __name__ == "__main__":
+
     print('Starting python flask server!')
+    
     app.run(host='0.0.0.0', port=5000)
