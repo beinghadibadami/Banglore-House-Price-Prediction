@@ -57,7 +57,7 @@ def load_artifacts():
     print('Loading Saved Artifacts....')
     
 
-    with open(r"server/artifacts/columns.json",'r') as f:
+    with open(r"artifacts/columns.json",'r') as f:
 
         __data_columns=json.load(f)['data_columns']
 
@@ -65,7 +65,7 @@ def load_artifacts():
     
     print('Locations Loaded.....!!')
 
-    with open(r"server/artifacts/house_prices_prediction.pickle",'rb') as f :
+    with open(r"artifacts/house_prices_prediction.pickle",'rb') as f :
 
         __model=pickle.load(f)
 
