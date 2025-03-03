@@ -41,5 +41,5 @@ This is a data science project that uses Linear Regression to predict house pric
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/Data-Science-Project.git
-cd Data-Science-Project
+git clone https://github.com/yourusername/Banglore-House-Price-Prediction.git
+cd Banglore-House-Price-Prediction 
