@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-
 # Set up the custom CSS for styling
 st.markdown("""
     <style>
@@ -44,18 +43,21 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Fetch locations from Flask server
+# Replace with your actual deployed Flask server URL
+FLASK_SERVER_URL = 'https://your-app.onrender.com'
+
+# Fetch locations
 def fetch_locations():
-    response = requests.get('http://127.0.0.1:5000/get_location_names')
+    response = requests.get(f'{FLASK_SERVER_URL}/get_location_names')
     if response.status_code == 200:
         return response.json()['locations']
     else:
         st.error('Error fetching location names from server.')
         return []
 
-# Predict house price using Flask server
+# Predict house price
 def predict_price(location, total_sqft, bhk, bath):
-    response = requests.post('http://127.0.0.1:5000/predict_house_price', data={
+    response = requests.post(f'{FLASK_SERVER_URL}/predict_house_price', data={
         'location': location,
         'total_sqft': total_sqft,
         'bhk': bhk,
