@@ -2,4 +2,5 @@ flask
 streamlit
 requests
 numpy
+gunicorn
 jsonpickle
