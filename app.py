@@ -44,7 +44,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Replace with your actual deployed Flask server URL
-FLASK_SERVER_URL = 'https://your-app.onrender.com'
+FLASK_SERVER_URL = 'https://banglore-house-price-prediction-0ssa.onrender.com'
 
 # Fetch locations
 def fetch_locations():
