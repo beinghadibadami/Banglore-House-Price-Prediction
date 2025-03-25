@@ -4,4 +4,4 @@ requests
 numpy
 gunicorn
 jsonpickle
-sklearn
+scikit-learn
