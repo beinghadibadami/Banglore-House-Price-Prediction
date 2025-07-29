@@ -1,7 +1,6 @@
 flask
-streamlit
+flask-cors
 requests
 numpy
-gunicorn
 jsonpickle
 scikit-learn
