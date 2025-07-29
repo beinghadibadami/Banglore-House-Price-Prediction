@@ -7,7 +7,6 @@ app=Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
 
 @app.route('/get_location_names',methods=['GET'])
-
 def get_location_names():
 
     print('Getting locations !!')
@@ -24,22 +23,20 @@ def get_location_names():
 
     return response
 
-@app.route('/predict_house_price',methods=['POST'])
 
+@app.route('/predict_house_price', methods=['POST'])
 def predict_house_price():
-    
-    total_sqft=float(request.form['total_sqft'])
-    
-    location=request.form['location']
-    
-    bhk=int(request.form['bhk'])
-    
-    bath=int(request.form['bath'])
+    data = request.get_json()
 
-    response=jsonify({
-        'estimated_price' : util.get_estimated_price(location,total_sqft,bath,bhk)
-    })    
+    total_sqft = float(data['sqft'])
+    location = data['location']
+    bhk = int(data['bedrooms'])
+    bath = int(data['bathrooms'])
 
+    response = jsonify({
+        'estimated_price': util.get_estimated_price(location, total_sqft, bath, bhk)
+    })
+    
     response.headers.add('Access-Control-Allow-Origin', '*')
 
     return response
