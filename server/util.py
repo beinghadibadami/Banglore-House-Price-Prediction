@@ -12,35 +12,24 @@ def get_location_names():
     return __locations
 
 
-def get_estimated_price(location,sqft,bath,bhk):
+def get_estimated_price(location, sqft, bath, bhk):
+    location = location.strip().lower()  # ✅ clean input
 
     try:
+        loc_index = __data_columns.index(location)
+    except ValueError:
+        loc_index = -1
 
-        loc_index=__data_columns.index(location.lower())
+    if loc_index == -1:
+        return 'No data available for this location'
 
-    except:
+    x = np.zeros(len(__data_columns))
+    x[-3] = sqft
+    x[-2] = bath
+    x[-1] = bhk
+    x[loc_index] = 1
 
-        loc_index=-1
-    
-
-    if loc_index == -1: 
-
-        return 'No data available for this location' 
-
-    else:
-
-        x=np.zeros(len(__data_columns))
-
-        x[235]=sqft
-
-        x[236]=bath
-
-        x[237]=bhk
-
-        x[loc_index]=1
-
-
-        return round(__model.predict([x])[0],2)
+    return round(__model.predict([x])[0], 2)
 
 
 def load_artifacts():
@@ -60,8 +49,10 @@ def load_artifacts():
     with open(r"artifacts/columns.json",'r') as f:
 
         __data_columns=json.load(f)['data_columns']
-
-        __locations=__data_columns[:235]
+        
+        __data_columns = [col.strip() for col in __data_columns]
+        
+        __locations=__data_columns[:-3]
     
     print('Locations Loaded.....!!')
 
