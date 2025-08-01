@@ -45,6 +45,10 @@ def predict_house_price():
 def health():
     return "Flask server is running!"
 
+@app.route('/')
+def home():
+    return "Backend Running !"
+
 if __name__ == "__main__":
 
     print('Starting python flask server!')
