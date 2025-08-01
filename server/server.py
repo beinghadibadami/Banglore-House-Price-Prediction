@@ -41,8 +41,8 @@ def predict_house_price():
 
     return response
 
-@app.route('/')
-def home():
+@app.route('/health')
+def health():
     return "Flask server is running!"
 
 if __name__ == "__main__":
